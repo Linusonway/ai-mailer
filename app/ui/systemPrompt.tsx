@@ -17,9 +17,9 @@ let systemPrompt: string = `
     3. Estimated read time (how many minutes)
 
     (main part)
-    4. Intro — short hook (why the topic matters today)
-    5. History/background (only if applicable, 2–4 sentences with 1 date/milestone)
-    6. Main content — 2–5 sections with details (each with a title + 1–5 short paragraphs or bullets). Use examples, (short code/command snippets only if relevant.)
+    4. Intro — short hook (why the topic matters today) (What is it, how does it help)
+    5. History/background/reason of creation (only if applicable, 2–4 sentences with 1 date/milestone)
+    6. Main content — 2–5 sections with details (each with a title + 1–5 short paragraphs or bullets). Use examples, (short code/command snippets only if relevant.) (Add code samples if the article is about coding and code snippets are required)
     7. Conclusion — 1 short paragraph (final thoughts + next step/resources)
     8. Key takeaways — 2-3 concise bullets
 
@@ -28,9 +28,14 @@ let systemPrompt: string = `
     11. Sources — numbered list of authoritative links
 
     📌 Style rules
-    - (Only when applicable) Use dark mode for the html code with white text and well formatted text and styles, so that the text, code or any block is visible appropriately. If there's a code snippet, make sure it doesn't break the UI, and use a block(which shows colored code) like in developer docs to render it, so that it looks like an IDE screenshot.
-    - Keep it **concise and engaging**: bullets > walls of text.
+    -- Format ---
+    - Use dark mode for the html code with white text and well formatted text and styles, so that the text, code or any block is visible appropriately. 
+    -(Only when applicable)If there's a code snippet, make sure it doesn't break the UI, and use a block(which shows colored code) like in developer docs to render it, so that it looks like an IDE screenshot.
     - Use fonts like Lucide, and make sure that the UI looks perfect and the font sizes, the line heights, the padding, the margin, the spacing, the colors, the fonts are all well formatted and look good.
+    - Can use href links to appropriate sources inside the article if it seems relevant.
+
+    -- Info ---
+    - Keep it **concise and engaging**: bullets > walls of text.
     - Make it **practical or enlightening**: what should the reader understand or apply?
     - Prioritize **accuracy** and **primary sources** (official sites, journals, major institutions).
     - Do not hallucinate links; include only verified URLs.

@@ -8,26 +8,26 @@ import { generateText } from "ai";
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { topic, chapter } = body;
+    const { Topic, Chapter } = body;
 
-    if (!topic) {
+    if (!Topic) {
       return NextResponse.json(
-        { error: "Missing topic" },
+        { error: "Missing Topic" },
         { status: 400 }
       );
     }
 
-    const chapterExists = chapter ? `, on chapter: ${chapter}` : " "; // Send only if the chapter valule exists
-    const prompt = `Write an article on the topic: ${topic} ${chapterExists} \n\n Email sample: ${emailSample}`;
+    const ChapterExists = Chapter ? `, on Chapter: ${Chapter}` : " "; // Send only if the Chapter valule exists
+    const prompt = `Write an article on the Topic: ${Topic} ${ChapterExists} \n\n Email sample: ${emailSample}`;
 
     // Tool Call
     const { text } = await generateText({
       // model: groq("openai/gpt-oss-120b"),
-      model: groq("openai/gpt-oss-20b"),
+      model: groq("openai/gpt-oss-120b"),
       system: systemPrompt,
       prompt,
-      // tools: { browser_search: groq.tools.browserSearch({}) },
-      // toolChoice: "auto",
+      tools: { browser_search: groq.tools.browserSearch({}) },
+      toolChoice: "auto",
     });
     // ----------
 

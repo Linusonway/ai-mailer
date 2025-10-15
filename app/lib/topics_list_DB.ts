@@ -24,7 +24,7 @@ async function fetchNewTopics_FirstRow() {
     console.error('Error fetching new_topics:', error)
     return ["An error occured"]
   }
-  return data
+  return data[0]
 }
 
 // Adding data to the learnt_topics table:
@@ -35,7 +35,7 @@ async function addToLearntTopics(sent_topic: dataSchema) {
     "created_at": sent_topic.created_at,
     "Topic": sent_topic.Topic,
     "Day": sent_topic.Day,
-    "chapter": sent_topic.chapter
+    "Chapter": sent_topic.Chapter
   }
 
   const { error } = await supabase
