@@ -50,7 +50,7 @@ export async function GET() {
 //     try {
 //         // Use absolute URL for server-side requests
 //         const sendMail = await axios.post(`http://localhost:3000/api/emailer`, {
-//             email: 'tomandlinus@gmail.com',
+//             email: 'process.env.EMAIL_ADDRESS',
 //             subject: 'Test Email',
 //             html: emailSample
 //         });
