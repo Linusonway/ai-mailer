@@ -10,6 +10,11 @@
 !.yarn/releases
 !.yarn/versions
 
+# Extra
+.github/
+.trae/
+
+
 # testing
 /coverage
 

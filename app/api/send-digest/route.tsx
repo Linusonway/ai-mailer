@@ -13,6 +13,9 @@ export async function GET(request: Request) {
         let topics = await fetchNewTopics_FirstRow();
         let {Topic, Day, Chapter} = topics;
 
+        if (!Topic) {
+            return NextResponse.json({ error: 'Topic is missing' }, { status: 400 });
+        }
 
         // AI Draft:
         const aiResponse = await axios.post(`${baseUrl}/api/ai_draft`, {
@@ -36,7 +39,7 @@ export async function GET(request: Request) {
             await deleteNewTopics(topics); // Delete from New Topics:
         }
 
-        return NextResponse.json({ data: textResponse, sendMail: sendMail.data });  
+        return NextResponse.json({ aidata: (textResponse? 'Success' : 'Failed'), sendMail: sendMail.data });  
     } catch (error) {
         console.error('Error in test route:', error);
         return NextResponse.json({ error: 'Failed to fetch AI response' }, { status: 500 });

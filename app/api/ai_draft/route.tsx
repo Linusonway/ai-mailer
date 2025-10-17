@@ -22,7 +22,6 @@ export async function POST(req: Request) {
 
     // Tool Call
     const { text } = await generateText({
-      // model: groq("openai/gpt-oss-120b"),
       model: groq("openai/gpt-oss-120b"),
       system: systemPrompt,
       prompt,
