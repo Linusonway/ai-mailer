@@ -10,8 +10,8 @@ export async function GET(request: Request) {
         const baseUrl = `${protocol}://${host}`;
 
         // DB data fetch:
-        let topics = await fetchNewTopics_FirstRow();
-        let {Topic, Day, Chapter} = topics;
+        const topics = await fetchNewTopics_FirstRow();
+        const {Topic, Day, Chapter} = topics;
 
         if (!Topic) {
             return NextResponse.json({ error: 'Topic is missing' }, { status: 400 });
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
             Topic: Topic,
             Chapter: Chapter
         });
-        let textResponse = aiResponse.data.text
+        const textResponse = aiResponse.data.text
 
         // Send the email:
         const sendMail = await axios.post(`${baseUrl}/api/emailer`, {

@@ -31,7 +31,7 @@ async function fetchNewTopics_FirstRow() {
 // Receives the data in raw form, and appends it to the learnt_topics table after removing the id column
 async function addToLearntTopics(sent_topic: dataSchema) {
 
-  let appendData = {
+  const appendData = {
     "created_at": sent_topic.created_at,
     "Topic": sent_topic.Topic,
     "Day": sent_topic.Day,
