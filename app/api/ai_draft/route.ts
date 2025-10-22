@@ -17,10 +17,9 @@ export async function POST(req: Request) {
       );
     }
 
-    const ChapterExists = Chapter ? `, on Chapter: ${Chapter}` : " "; // Send only if the Chapter valule exists
+    const ChapterExists = Chapter ? `, on Chapter: ${Chapter}` : " ";
     const prompt = `Write an article on the Topic: ${Topic} ${ChapterExists} \n\n Email sample: ${emailSample}`;
 
-    // Tool Call
     const { text } = await generateText({
       model: groq("openai/gpt-oss-120b"),
       system: systemPrompt,
@@ -28,8 +27,6 @@ export async function POST(req: Request) {
       tools: { browser_search: groq.tools.browserSearch({}) },
       toolChoice: "auto",
     });
-    // ----------
-
 
     return NextResponse.json({ text });
   } catch (error) {
