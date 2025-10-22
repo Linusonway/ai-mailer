@@ -13,7 +13,8 @@
 # Extra
 .github/
 .trae/
-/app/api/test/*
+/app/api/test/
+
 
 
 # testing
