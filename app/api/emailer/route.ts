@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 
 export async function POST(request: Request) {
   try {
@@ -10,6 +9,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "RESEND_API_KEY is not set" }, { status: 500 });
     }
 
+    const { Resend } = await import("resend");  
     const resend = new Resend(apiKey);
     const { data, error } = await resend.emails.send({
       from: "Wiz <onboarding@resend.dev>",
