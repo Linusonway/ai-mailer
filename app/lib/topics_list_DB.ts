@@ -1,9 +1,10 @@
 // Fetching the list of postgres DB from Supabase:
 
 // Three functions, fetch the new_topics's first row, insert it into the learnt_topics table and delete it from the new_topics table
+// Fourth func, to ascertain that only one email is sent per day.
 
 import { createClient } from '@supabase/supabase-js'
-import dataSchema from './dataSchema'
+import dataSchema, {learnt_data_Schema} from './dataSchema'
 
 // Initializing the Supabase client:
 const supabase = createClient(
@@ -35,7 +36,8 @@ async function addToLearntTopics(sent_topic: dataSchema) {
     "created_at": sent_topic.created_at,
     "Topic": sent_topic.Topic,
     "Day": sent_topic.Day,
-    "Chapter": sent_topic.Chapter
+    "Chapter": sent_topic.Chapter,
+    "sent_at": new Date().toISOString()
   }
 
   const { error } = await supabase
@@ -62,8 +64,26 @@ async function deleteNewTopics(row: dataSchema) {
   }
 }
 
+// Get the most recent email sent date:
+async function getLastEmailDate() {
+  const { data, error } = await supabase
+    .from('learnt_topics')
+    .select('sent_at')
+    .order('sent_at', { ascending: false })
+    .limit(1)
+    
+  if (error) {
+    console.error('Error fetching last email date:', error)
+    return null
+  }
+  
+  return data[0]?.sent_at || null
+}
+
+
 export {
   fetchNewTopics_FirstRow,
   addToLearntTopics,
-  deleteNewTopics
+  deleteNewTopics,
+  getLastEmailDate
 }
