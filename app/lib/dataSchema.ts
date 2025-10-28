@@ -4,18 +4,6 @@
 // "Day": 1,
 // "Chapter": "testone"
 
-<<<<<<< HEAD
-
-type dataSchema = {
-    id: number,
-    created_at: Date,
-    Topic: string,
-    Day: string,
-    Chapter: string,
-}
-
-export default dataSchema
-=======
 type dataSchema = {
   id: number;
   created_at: Date;
@@ -34,4 +22,3 @@ export type learnt_data_Schema = {
 };
 
 export default dataSchema;
->>>>>>> upstream/main
