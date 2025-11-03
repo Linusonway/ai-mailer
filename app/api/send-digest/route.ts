@@ -22,6 +22,7 @@ export async function GET(request: Request) {
         // DB data fetch:
         const topics = await fetchNewTopics_FirstRow();
         const {Topic, Day, Chapter} = topics;
+        // const {Topic, Day, Chapter} = {"Topic": "What is bayesian statistics", "Day": "1/1", "Chapter": "Mathematics in programming."};
 
         if (!Topic) {
             return NextResponse.json({ error: 'Topic is missing' }, { status: 400 });
