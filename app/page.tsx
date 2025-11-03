@@ -16,7 +16,7 @@ export default function Home() {
         <p>
           <Link href="/api/test">Testing route: api/test</Link> </p>
         <p>
-          <Link href="/api/send-digest">Digest route: /api/send-digest</Link> </p>
+          <div>Digest route: /api/send-digest</div> </p>
       </div>
 
       <br /><br />
