@@ -1,0 +1,18 @@
+name: Daily Email Digest
+
+on:
+  schedule:
+    - cron: "0 9 */2 * *"  # Runs every other day at 09:00 UTC
+  workflow_dispatch:      # Allows manual trigger too
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger email route
+        run: |
+          echo "Triggering daily email digest..."
+          curl -X GET $DIGEST_URL
+        env:
+          DIGEST_URL: ${{ secrets.DIGEST_URL }}
